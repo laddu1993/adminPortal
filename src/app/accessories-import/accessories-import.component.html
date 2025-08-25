@@ -1,0 +1,50 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Import Accessories</mat-card-title>
+    </mat-card-header>
+  
+  
+    <mat-card-content>
+      
+      <div>
+        <button mat-raised-button color="primary" class="custom-button float-right" (click)="goBackToList()">Back</button>
+        <mat-label>Upload File</mat-label>
+        <input type="file" (change)="onFileChange($event)" />
+        <button mat-raised-button color="primary" (click)="uploadFile()">Upload</button>
+      </div>
+      <!-- <button mat-raised-button color="primary" class="custom-button float-right" (click)="goBackToList()">Back</button>
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-field-wrap">
+              <mat-label>Upload File</mat-label>
+              <input type="file" (change)="onFileChange($event)" />
+  
+            </div>
+  
+  
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              Optional: Preview the file (for images) -->
+              <!--<div *ngIf="filePreview">
+                <img [src]="filePreview" alt="File preview" style="max-width: 200px; max-height: 200px;" />
+              </div>-->
+            <!-- </div>
+          </div>
+  
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button mat-raised-button color="primary" (click)="uploadFile()">Upload</button>
+          </div>
+        </div>
+      </div>-->
+  
+  
+  
+  
+  
+  
+    </mat-card-content>
+  </mat-card>

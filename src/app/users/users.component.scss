@@ -1,0 +1,16 @@
+table {
+  width: 100%;
+}
+
+button {
+  margin: 5px;
+}
+
+:host ::ng-deep .mdc-text-field--outlined {
+  --mdc-outlined-text-field-container-shape: 28px;
+}
+
+::ng-deep .red-snackbar .mdc-snackbar__surface {
+  background-color: red !important;
+  color: white !important;
+}

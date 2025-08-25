@@ -1,0 +1,11 @@
+mat-progress-bar {
+    //position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* Ensure it is above other content */
+  }
+  .mat-mdc-progress-bar {
+    --mdc-linear-progress-active-indicator-color: orange !important;
+}
+  

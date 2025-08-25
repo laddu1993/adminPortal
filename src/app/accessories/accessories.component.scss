@@ -1,0 +1,50 @@
+table {
+    width: 100%;
+  }
+  
+  button {
+    margin: 5px;
+  }
+  .table-container {
+    margin: 20px;
+  }
+  
+  mat-form-field {
+    width: 20%;
+    float: right;
+  }
+  mat-list-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  mat-icon {
+    margin-right: 16px;
+  }
+  mat-icon {
+    font-size: 18px; /* Adjust size */
+    color: #3f51b5; /* Adjust color */
+  }
+  
+  button mat-icon {
+    margin-right: 8px; /* Space between icon and text */
+  }
+  button span{
+    font-size: 14px;
+  }
+  
+  .no-records {
+    text-align: center;
+    font-weight: bold;
+    padding: 20px;
+    color: #757575;
+  }
+  
+  :host ::ng-deep .mdc-text-field--outlined {
+    --mdc-outlined-text-field-container-shape: 28px;
+  }
+  
+  ::ng-deep .red-snackbar .mdc-snackbar__surface {
+    background-color: red !important;
+    color: white !important;
+  }

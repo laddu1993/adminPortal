@@ -1,0 +1,29 @@
+.add-button{
+    margin-right: 10px;
+}
+.float-right{
+    float: right;
+}
+.float-left{
+  float: left;
+}
+.div-toolbar{
+  float: right;
+  width: 160px;
+  padding: 5px;
+}
+/* Optional: Customize the appearance */
+.mat-toolbar {
+    background: #f5f5f5;
+    width: 50%;
+  }
+  
+  .mat-menu-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .mat-icon {
+    margin-right: 8px;
+  }
+  

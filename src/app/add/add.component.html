@@ -1,0 +1,89 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Add Fleet</mat-card-title>
+    </mat-card-header>
+
+
+    <mat-card-content>
+
+
+        <div class="div-toolbar">
+            <mat-toolbar>
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>upload</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="onImport()">
+                        <mat-icon>import_export</mat-icon>
+                        <span>Import</span>
+                    </button>
+                    <button mat-menu-item (click)="onExport()">
+                        <mat-icon>import_export</mat-icon>
+                        <span>Export</span>
+                    </button>
+                </mat-menu>
+            </mat-toolbar>
+        </div>
+        <button mat-raised-button color="primary" class="custom-button float-right"
+            (click)="goBackToList()">Back</button>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-error *ngIf="apiErrors.error">
+                            {{ apiErrors.error }}
+                        </mat-error>
+                        <mat-form-field appearance="fill">
+                            <mat-label>SKU</mat-label>
+                            <input matInput formControlName="sku">
+                            <mat-error *ngIf="form.get('sku')?.hasError('required')">
+                                SKU is <strong>required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="form.get('sku')?.hasError('pattern')">
+                                Enter a valid <strong>SKU</strong>
+                            </mat-error>
+                            <mat-error *ngIf="form.get('sku')?.hasError('minlength')">
+                                SKU must be at least 9 characters long.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Points</mat-label>
+                            <input matInput formControlName="points">
+                            <mat-error *ngIf="form.get('points')?.hasError('required')">
+                                Points is <strong>required</strong>
+                            </mat-error>
+                            <mat-error *ngIf="form.get('points')?.hasError('pattern')">
+                                Enter a valid <strong>points</strong>
+                            </mat-error>
+                            <mat-error *ngIf="form.get('sku')?.hasError('minlength')">
+                                Points must be at least 1 character.
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+
+            <br />
+
+            <br />
+            <button mat-raised-button type="submit" color="primary" class="add-button">Submit</button>
+            <button mat-raised-button type="button" (click)="clearForm()" color="warn">Clear</button>
+        </form>
+
+
+        <!--<form (ngSubmit)="onSubmit()" #addForm="ngForm" [formGroup]="form" >
+        <mat-form-field appearance="fill">
+          <mat-label>SKU</mat-label>
+          <input matInput [(ngModel)]="fleet.sku" name="sku" required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Points</mat-label>
+            <input matInput [(ngModel)]="fleet.points" name="points" required>
+          </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+      </form>-->
+    </mat-card-content>
+</mat-card>

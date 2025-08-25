@@ -1,0 +1,26 @@
+<mat-sidenav-container *ngIf="isLoggedIn">
+  <mat-sidenav #sidenav mode="side" opened>
+    <mat-toolbar><img src="../assets/logo.svg"></mat-toolbar>
+    <mat-nav-list>
+      <mat-list>
+        <mat-list-item routerLink="/auth/dashboard" routerLinkActive="active">Dashboard</mat-list-item>
+        <mat-list-item routerLink="/auth/users" routerLinkActive="active">Users</mat-list-item>
+        <mat-list-item routerLink="/auth/fleet" routerLinkActive="active">Fleets</mat-list-item>
+        <mat-list-item routerLink="/auth/accessories" routerLinkActive="active">Accessories</mat-list-item>
+        <!--<mat-list-item routerLink="/admin/list" routerLinkActive="active">Fleets</mat-list-item>-->
+        <mat-list-item routerLink="/auth/national-account" routerLinkActive="active">National Accounts</mat-list-item>
+      </mat-list>
+    </mat-nav-list>
+    <button mat-raised-button (click)="logout()">Logout</button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Rebate Admin &nbsp; <b *ngIf="!isUATMode">{{envName}}</b></span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<router-outlet *ngIf="!isLoggedIn"></router-outlet> <!-- Login and other non-admin pages -->

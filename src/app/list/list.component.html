@@ -1,0 +1,72 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Fleet Points</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <!--<mat-form-field appearance="fill">
+      <mat-label>Upload Excel File</mat-label>
+      <input type="file" (change)="onFileChange($event)" matInput  />
+    </mat-form-field>-->
+    <button mat-raised-button color="warn" class="custom-button" (click)="onImportClick()">IMPORT</button>
+    <button mat-raised-button color="primary" class="custom-button" (click)="onButtonClick()">ADD</button>
+
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+      <!-- Define columns -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="sku">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> SKU </th>
+        <td mat-cell *matCellDef="let element"> 
+          <ng-container *ngIf="editingRow?.id === element.id; else viewMode">
+            <mat-form-field appearance="fill">
+              <mat-label>SKU</mat-label>
+              <input matInput ><!--[(ngModel)]="element.sku"-->
+              
+            </mat-form-field>
+          </ng-container>
+          <ng-template #viewMode>
+            {{element.sku}}
+          </ng-template>
+          </td>
+      </ng-container>
+      <ng-container matColumnDef="points">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Points </th>
+        <td mat-cell *matCellDef="let element"> 
+          <ng-container *ngIf="editingRow?.id === element.id; else viewMode">
+            <mat-form-field appearance="fill">
+              <mat-label>Points</mat-label>
+              <input matInput><!-- [(ngModel)]="element.points"-->
+              
+            </mat-form-field>
+          </ng-container>
+          <ng-template #viewMode>
+            {{element.points}}
+          </ng-template>
+          </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <!--<button mat-button [routerLink]="['/edit', element.id]">Edit</button>-->
+          <ng-container *ngIf="editingRow?.id === element.id; else editMode">
+            <button mat-button (click)="saveEdit()">Save</button>
+            <button mat-button (click)="cancelEdit()">Cancel</button>
+          </ng-container>
+          <ng-template #editMode>
+            <button mat-button (click)="startEdit(element)">Edit</button>
+          </ng-template>
+          <button mat-button color="warn" [routerLink]="['/delete', element.id]">Delete</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <!-- Pagination -->
+    <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page"></mat-paginator>
+  </mat-card-content>
+</mat-card>

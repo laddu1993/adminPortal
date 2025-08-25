@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>{{ data.id ? 'Edit' : 'New' }} Accessories</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>SKU</mat-label>
+      <input matInput formControlName="sku">
+      <mat-error *ngIf="form.get('sku')?.hasError('required')">
+        SKU is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="form.get('sku')?.hasError('pattern')">
+        Enter a valid <strong>SKU</strong>
+    </mat-error>
+    <mat-error *ngIf="form.get('sku')?.hasError('minlength')">
+        SKU must be at least 9 characters long.
+    </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Type</mat-label>
+        <input matInput formControlName="type">
+        <mat-error *ngIf="form.get('type')?.hasError('required')">
+            Type is <strong>required</strong>
+      </mat-error>      
+      <mat-error *ngIf="form.get('type')?.hasError('minlength')">
+            Type must be at least 3 character.
+      </mat-error>
+      </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid">Save</button>
+</div>

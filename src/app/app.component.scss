@@ -1,0 +1,19 @@
+.sidenav-container {
+    height: 100%;
+  }
+  
+  mat-sidenav {
+    width: 240px;
+    
+  }
+  mat-sidenav-container{
+    position: inherit;
+  }
+  mat-sidenav-content {
+    padding: 20px;
+    
+  }
+  mat-list-item{
+    cursor: pointer !important;
+  }
+  

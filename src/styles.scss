@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import '~@angular/material/prebuilt-themes/indigo-pink.css'; // You can choose other themes as well
+/* Define the green color for the toaster message */
+.mdc-snackbar__surface {
+    background-color: #227730 !important; /* Green background */
+    color: white !important;              /* White text color */
+}
+
+.mdc-snackbar__label {
+    color: white !important; /* Ensure the message text is white */
+}
+
+.mdc-snackbar__actions button {
+    color: white !important; /* Ensure the button (action text) is white */
+}

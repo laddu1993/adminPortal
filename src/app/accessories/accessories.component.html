@@ -1,0 +1,74 @@
+<mat-card>
+    <!-- <mat-card-header>
+        <mat-card-title>Fleet Points</mat-card-title>
+    </mat-card-header>-->
+    <mat-card-content>
+        
+        <div>
+
+            
+            <div class="table-container">
+                <button mat-raised-button color="primary" (click)="openDialog()">Add New</button>
+                
+                <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="onImportClick()">
+                        <mat-icon>arrow_upward</mat-icon>
+                        <span>Import</span>
+                    </button>
+                    <button mat-menu-item (click)="exportToExcel()">
+                        <mat-icon>arrow_downward</mat-icon>
+                        <span>Export</span>
+                    </button>
+                </mat-menu>
+
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Search</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Search" />
+                </mat-form-field>
+                <app-progress-bar></app-progress-bar>
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+                    <!-- ID Column -->
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+                        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+                    </ng-container>
+
+                    <!-- SKU Column -->
+                    <ng-container matColumnDef="sku">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>SKU</th>
+                        <td mat-cell *matCellDef="let element">{{ element.sku }}</td>
+                    </ng-container>
+
+                    <!-- Points Column -->
+                    <ng-container matColumnDef="type">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+                        <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+                    </ng-container>
+
+                    <!-- Actions Column -->
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef>Actions</th>
+                        <td mat-cell *matCellDef="let element">
+                            <button mat-button (click)="openDialog(element)">Edit</button>
+                            <button mat-button color="warn" (click)="delete(element.id)">Delete</button>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="['id', 'sku', 'type', 'actions']"></tr>
+                    <tr mat-row *matRowDef="let row; columns: ['id', 'sku', 'type', 'actions'];"></tr>
+                </table>
+                <!-- Show No Records Message -->
+                <div *ngIf="dataSource.filteredData.length === 0" class="no-records">
+                    No record available
+                </div>
+                <!-- Pagination -->
+                <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]"
+                    aria-label="Select page"></mat-paginator>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

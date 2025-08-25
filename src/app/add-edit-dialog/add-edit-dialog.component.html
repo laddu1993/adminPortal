@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>{{ data.id ? 'Edit' : 'New' }} National Account</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    
+    <mat-form-field>
+      <mat-label>National Account Name</mat-label>
+      <input matInput formControlName="national_account_name">
+      <mat-error *ngIf="form.get('national_account_name')?.hasError('required')">
+        National Account Name is required
+      </mat-error>
+      <mat-error *ngIf="form.get('national_account_name')?.hasError('minlength')">
+        Must be at least 3 characters long.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Territory Dropdown -->
+    <mat-form-field>
+      <mat-label>Territory</mat-label>
+      <mat-select formControlName="territory">
+        <mat-option *ngFor="let option of territoryOptions" [value]="option">
+          {{ option }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('territory')?.hasError('required')">
+        Territory is required
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid">Save</button>
+</div>

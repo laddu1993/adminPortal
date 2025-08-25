@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>{{ data.id ? 'Edit' : 'New' }} Fleet Point</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>SKU</mat-label>
+      <input matInput formControlName="sku">
+      <mat-error *ngIf="form.get('sku')?.hasError('required')">
+        SKU is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="form.get('sku')?.hasError('pattern')">
+        Enter a valid <strong>SKU</strong>
+    </mat-error>
+    <mat-error *ngIf="form.get('sku')?.hasError('minlength')">
+        SKU must be at least 9 characters long.
+    </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Points</mat-label>
+        <input matInput formControlName="points">
+        <mat-error *ngIf="form.get('points')?.hasError('required')">
+          Points is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="form.get('points')?.hasError('pattern')">
+          Enter a valid <strong>points</strong>
+      </mat-error>
+      <mat-error *ngIf="form.get('points')?.hasError('minlength')">
+          Points must be at least 1 character.
+      </mat-error>
+      </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="form.invalid">Save</button>
+</div>

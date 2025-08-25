@@ -1,0 +1,15 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Edit Item</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()"><!-- #editForm="ngForm"-->
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput name="name" required>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  
